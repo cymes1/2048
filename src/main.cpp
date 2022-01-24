@@ -1,7 +1,7 @@
-#include <cstdio>
+#include "../lib/lava/src/main.cpp"
 
 int main()
 {
-    printf("Hello World!\n");
+    run();
     return 0;
 }
