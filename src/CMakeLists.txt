@@ -1,3 +1,4 @@
-add_executable(2048 main.cpp)
+set(EXECUTABLE 2048)
+add_executable(${EXECUTABLE} main.cpp)
 
-target_link_libraries(2048 lava)
+target_link_libraries(${EXECUTABLE} lava)
