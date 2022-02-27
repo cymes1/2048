@@ -17,12 +17,6 @@ namespace States
         void deinitialize();
 
         template <class TState>
-        void initialize()
-        {
-            createNewState<TState>();
-        }
-
-        template <class TState>
         void createNewState()
         {
             if(state != nullptr)

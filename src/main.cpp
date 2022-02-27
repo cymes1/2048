@@ -8,9 +8,9 @@ using namespace States;
 int main()
 {
     GameStateMachine stateMachine;
-    Window window(800, 600, "2048");
+    Window window("2048");
 
-    stateMachine.initialize<BootState>();
+    stateMachine.createNewState<BootState>();
     while(!glfwWindowShouldClose(window.handle()))
     {
         glfwPollEvents();
