@@ -14,6 +14,7 @@ namespace States
         GameStateMachine();
 
         void tick();
+        void renderImGui();
         void deinitialize();
 
         template <class TState>

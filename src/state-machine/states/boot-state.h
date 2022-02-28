@@ -13,6 +13,7 @@ namespace States
 
         void initialize() override;
         void tick() override;
+        void renderImGui() override;
         void deinitialize() override;
     };
 }

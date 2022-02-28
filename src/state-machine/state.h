@@ -15,6 +15,7 @@ namespace States
 
         virtual void initialize() = 0;
         virtual void tick() = 0;
+        virtual void renderImGui() = 0;
         virtual void deinitialize() = 0;
     };
 }

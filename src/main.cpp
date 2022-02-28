@@ -14,10 +14,10 @@ int main()
     while(!glfwWindowShouldClose(window.handle()))
     {
         glfwPollEvents();
-        glClearColor(0.5f, 0.3f, 0.5f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         stateMachine.tick();
+        stateMachine.renderImGui();
         glfwSwapBuffers(window.handle());
     }
     stateMachine.deinitialize();

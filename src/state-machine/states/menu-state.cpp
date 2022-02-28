@@ -16,6 +16,10 @@ namespace States
     {
     }
 
+    void MenuState::renderImGui()
+    {
+    }
+
     void MenuState::deinitialize()
     {
         LavaEngine::Utils::Log::info("deinitialize menu state");
