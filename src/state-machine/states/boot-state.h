@@ -15,6 +15,9 @@ namespace States
         void tick() override;
         void renderImGui() override;
         void deinitialize() override;
+
+    private:
+        void initializeDebugLogs();
     };
 }
 
