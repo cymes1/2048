@@ -14,7 +14,7 @@ namespace States
 
     void MenuState::tick()
     {
-        Renderer::getInstance()->tick();
+        Renderer::getInstance()->draw();
     }
 
     void MenuState::renderImGui()
