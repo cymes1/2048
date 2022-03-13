@@ -1,5 +1,7 @@
 #include "menu-state.h"
-#include <utils/log.h>
+#include <graphics/renderer.h>
+
+using namespace Lava::Graphics;
 
 namespace States
 {
@@ -8,20 +10,16 @@ namespace States
     {}
 
     void MenuState::initialize()
-    {
-        LavaEngine::Utils::Log::info("initialize menu state");
-    }
+    {}
 
     void MenuState::tick()
     {
+        Renderer::getInstance()->tick();
     }
 
     void MenuState::renderImGui()
-    {
-    }
+    {}
 
     void MenuState::deinitialize()
-    {
-        LavaEngine::Utils::Log::info("deinitialize menu state");
-    }
+    {}
 }
