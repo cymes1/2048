@@ -19,7 +19,7 @@ namespace States
 //        glEnable(GL_DEPTH_TEST);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClearColor(50.0f / 255.0f, 62.0f / 255.0f, 56.0f / 255.0f, 1.0f);
         Renderer::getInstance()->initialize();
     }
 

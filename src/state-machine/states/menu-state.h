@@ -11,10 +11,12 @@ namespace States
     class MenuState : public State<GameStateMachine>
     {
     private:
-        Lava::Graphics::Texture pikachuTexture;
-        Lava::Graphics::Texture gerwantTexture;
-        Lava::Graphics::Sprite sprite1;
-        Lava::Graphics::Sprite sprite2;
+        Lava::Graphics::Texture startButtonTexture;
+        Lava::Graphics::Texture optionsButtonTexture;
+        Lava::Graphics::Texture exitButtonTexture;
+        Lava::Graphics::Sprite startSprite;
+        Lava::Graphics::Sprite optionsSprite;
+        Lava::Graphics::Sprite exitSprite;
 
     public:
         explicit MenuState(GameStateMachine* stateMachine);
