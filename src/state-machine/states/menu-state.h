@@ -4,6 +4,7 @@
 #include <state.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
+#include <ui/button.h>
 #include <game-state-machine.h>
 
 namespace States
@@ -17,6 +18,14 @@ namespace States
         Lava::Graphics::Sprite startSprite;
         Lava::Graphics::Sprite optionsSprite;
         Lava::Graphics::Sprite exitSprite;
+        Lava::UI::Button startButton;
+        Lava::UI::Button optionsButton;
+        Lava::UI::Button exitButton;
+
+    private:
+        static void onStart();
+        static void onOptions();
+        static void onExit();
 
     public:
         explicit MenuState(GameStateMachine* stateMachine);

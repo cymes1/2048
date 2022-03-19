@@ -1,7 +1,10 @@
 #include "menu-state.h"
 #include <graphics/renderer.h>
+#include <input/input-system.h>
+#include <utils/log.h>
 
 using namespace Lava::Graphics;
+using namespace Lava::Input;
 
 namespace States
 {
@@ -12,11 +15,18 @@ namespace States
           exitButtonTexture("res/texture/exit-button.png"),
           startSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), startButtonTexture),
           optionsSprite(glm::vec3(960, 540, 0), glm::vec3(462, 92, 1), optionsButtonTexture),
-          exitSprite(glm::vec3(960, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture)
+          exitSprite(glm::vec3(960, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture),
+          startButton(startSprite, onStart),
+          optionsButton(optionsSprite, onOptions),
+          exitButton(exitSprite, onExit)
     {}
 
     void MenuState::initialize()
-    {}
+    {
+        InputSystem::getInstance()->registerButton(startButton);
+        InputSystem::getInstance()->registerButton(optionsButton);
+        InputSystem::getInstance()->registerButton(exitButton);
+    }
 
     void MenuState::tick()
     {
@@ -30,4 +40,19 @@ namespace States
 
     void MenuState::deinitialize()
     {}
+
+    void MenuState::onStart()
+    {
+        LavaEngine::Utils::Log::info("start");
+    }
+
+    void MenuState::onOptions()
+    {
+        LavaEngine::Utils::Log::info("options");
+    }
+
+    void MenuState::onExit()
+    {
+        InputSystem::getInstance()->exitGame();
+    }
 }
