@@ -2,6 +2,7 @@
 #include <graphics/renderer.h>
 #include <input/input-system.h>
 #include <utils/log.h>
+#include <states/game-state.h>
 
 using namespace Lava::Graphics;
 using namespace Lava::Input;
@@ -16,10 +17,11 @@ namespace States
           startSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), startButtonTexture),
           optionsSprite(glm::vec3(960, 540, 0), glm::vec3(462, 92, 1), optionsButtonTexture),
           exitSprite(glm::vec3(960, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture),
-          startButton(startSprite, onStart),
+          startButton(startSprite, [stateMachine]() { stateMachine->createNewState<GameState>(); }),
           optionsButton(optionsSprite, onOptions),
           exitButton(exitSprite, onExit)
-    {}
+    {
+    }
 
     void MenuState::initialize()
     {
@@ -39,7 +41,9 @@ namespace States
     {}
 
     void MenuState::deinitialize()
-    {}
+    {
+        InputSystem::getInstance()->clearButtons();
+    }
 
     void MenuState::onStart()
     {
