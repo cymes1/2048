@@ -7,6 +7,8 @@ using namespace Lava::Graphics;
 using namespace Lava::Input;
 using namespace States;
 
+void updateInput();
+
 int main()
 {
     GameStateMachine stateMachine;
@@ -16,7 +18,7 @@ int main()
     stateMachine.createNewState<BootState>();
     while(!glfwWindowShouldClose(window.getHandle()))
     {
-        glfwPollEvents();
+        updateInput();
         glClear(GL_COLOR_BUFFER_BIT);
 
         stateMachine.tick();
@@ -28,4 +30,11 @@ int main()
     }
     stateMachine.deinitialize();
     return 0;
+}
+
+void updateInput()
+{
+//    InputSystem::getInstance()->clearInput();
+    InputSystem::getInstance()->tickInput();
+    glfwPollEvents();
 }

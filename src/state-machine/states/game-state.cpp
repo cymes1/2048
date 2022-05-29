@@ -22,6 +22,18 @@ namespace States
 
     void GameState::tick()
     {
+        if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_LEFT))
+        {
+            LavaEngine::Utils::Log::info("click down");
+        }
+        if(InputSystem::getInstance()->getKey(GLFW_KEY_LEFT))
+        {
+            LavaEngine::Utils::Log::info("click");
+        }
+        if(InputSystem::getInstance()->getKeyUp(GLFW_KEY_LEFT))
+        {
+            LavaEngine::Utils::Log::info("click up");
+        }
         Renderer::getInstance()->draw(backSprite);
     }
     
