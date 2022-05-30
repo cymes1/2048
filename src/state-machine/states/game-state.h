@@ -6,6 +6,7 @@
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
 #include <ui/button.h>
+#include "../board/board-manager.h"
 
 namespace States
 {
@@ -15,6 +16,7 @@ namespace States
         Lava::Graphics::Texture backTexture;
         Lava::Graphics::Sprite backSprite;
         Lava::UI::Button backButton;
+        Board::BoardManager boardManager;
 
     private:
         static void onBack();

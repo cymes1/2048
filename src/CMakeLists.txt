@@ -1,12 +1,15 @@
 set(EXECUTABLE 2048)
 
 set(SOURCE_FILES main.cpp
+        board/board-manager.cpp
         state-machine/game-state-machine.cpp
         state-machine/states/boot-state.cpp
         state-machine/states/game-state.cpp
         state-machine/states/menu-state.cpp)
 
-set(HEADER_FILES state-machine/game-state-machine.cpp
+set(HEADER_FILES
+        board/board-manager.h
+        state-machine/game-state-machine.h
         state-machine/state.h
         state-machine/states/boot-state.h
         state-machine/states/game-state.h

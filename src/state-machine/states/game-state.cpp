@@ -12,28 +12,20 @@ namespace States
         : State(stateMachine),
           backTexture("res/texture/start-button.png"),
           backSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), backTexture),
-          backButton(backSprite, [stateMachine]() { stateMachine->createNewState<MenuState>(); })
+          backButton(backSprite, [stateMachine]() { stateMachine->createNewState<MenuState>(); }),
+          boardManager()
     {}
 
     void GameState::initialize()
     {
         InputSystem::getInstance()->registerButton(backButton);
+        boardManager.init();
     }
 
     void GameState::tick()
     {
-        if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_LEFT))
-        {
-            LavaEngine::Utils::Log::info("click down");
-        }
-        if(InputSystem::getInstance()->getKey(GLFW_KEY_LEFT))
-        {
-            LavaEngine::Utils::Log::info("click");
-        }
-        if(InputSystem::getInstance()->getKeyUp(GLFW_KEY_LEFT))
-        {
-            LavaEngine::Utils::Log::info("click up");
-        }
+        boardManager.tick();
+
         Renderer::getInstance()->draw(backSprite);
     }
     
