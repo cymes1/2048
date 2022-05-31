@@ -12,7 +12,7 @@ namespace Board
         Lava::Graphics::Texture* texture;
         Lava::Graphics::Sprite* sprite;
 
-        float speed = 0.01f;
+        float speed = 500.0f;
 
     public:
         ~BoardManager();
