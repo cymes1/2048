@@ -45,6 +45,7 @@ namespace Board
         board[0][0] = 2;
         board[2][2] = 2;
         board[0][2] = 4;
+        board[1][2] = 4;
     }
 
     void BoardManager::tick()
@@ -128,15 +129,21 @@ namespace Board
         {
             for(int j = 0; j < BOARD_SIZE; j++)
             {
-                if(board[j][i] == 4)
+                if((int)board[j][i] == 2)
+                {
+                    sprite->setTexture(*tex2);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if((int)board[j][i] == 4)
                 {
                     sprite->setTexture(*tex4);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
                     Renderer::getInstance()->draw(*sprite);
                 }
-                else if(board[j][i] == 2)
+                else if((int)board[j][i] == 8)
                 {
-                    sprite->setTexture(*tex2);
+                    sprite->setTexture(*tex8);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
                     Renderer::getInstance()->draw(*sprite);
                 }
