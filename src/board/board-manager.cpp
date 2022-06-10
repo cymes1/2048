@@ -1,4 +1,5 @@
 #include "board-manager.h"
+#include <random>
 #include <graphics/renderer.h>
 #include <input/input-system.h>
 
@@ -50,7 +51,7 @@ namespace Board
 
     void BoardManager::tick()
     {
-        glm::vec2 dir;
+        glm::vec2 dir(0, 0);
         if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_RIGHT))
             dir.x = 1;
         else if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_LEFT))
@@ -66,8 +67,8 @@ namespace Board
             {
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    char& current = board[i][j];
-                    char& right = board[i + 1][j];
+                    short& current = board[i][j];
+                    short& right = board[i + 1][j];
                     if(current != 0 && (right == 0 || current == right))
                     {
                         right += current;
@@ -82,8 +83,8 @@ namespace Board
             {
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    char& current = board[i][j];
-                    char& left = board[i - 1][j];
+                    short& current = board[i][j];
+                    short& left = board[i - 1][j];
                     if(current != 0 && (left == 0 || current == left))
                     {
                         left += current;
@@ -98,8 +99,8 @@ namespace Board
             {
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    char& current = board[j][i];
-                    char& up = board[j][i + 1];
+                    short& current = board[j][i];
+                    short& up = board[j][i + 1];
                     if(current != 0 && (up == 0 || current == up))
                     {
                         up += current;
@@ -114,8 +115,8 @@ namespace Board
             {
                 for (int j = 0; j < BOARD_SIZE; j++)
                 {
-                    char& current = board[j][i];
-                    char& down = board[j][i - 1];
+                    short& current = board[j][i];
+                    short& down = board[j][i - 1];
                     if(current != 0 && (down == 0 || current == down))
                     {
                         down += current;
@@ -125,29 +126,115 @@ namespace Board
             }
         }
 
+        if (dir.x != 0 || dir.y != 0)
+            generateTile();
+
         for(int i = 0; i < BOARD_SIZE; i++)
         {
             for(int j = 0; j < BOARD_SIZE; j++)
             {
-                if((int)board[j][i] == 2)
+                if(board[j][i] == 2)
                 {
                     sprite->setTexture(*tex2);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
                     Renderer::getInstance()->draw(*sprite);
                 }
-                else if((int)board[j][i] == 4)
+                else if(board[j][i] == 4)
                 {
                     sprite->setTexture(*tex4);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
                     Renderer::getInstance()->draw(*sprite);
                 }
-                else if((int)board[j][i] == 8)
+                else if(board[j][i] == 8)
                 {
                     sprite->setTexture(*tex8);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
                     Renderer::getInstance()->draw(*sprite);
                 }
+                else if(board[j][i] == 16)
+                {
+                    sprite->setTexture(*tex16);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] == 32)
+                {
+                    sprite->setTexture(*tex32);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] == 64)
+                {
+                    sprite->setTexture(*tex64);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] == 128)
+                {
+                    sprite->setTexture(*tex128);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] == 256)
+                {
+                    sprite->setTexture(*tex256);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] == 512)
+                {
+                    sprite->setTexture(*tex512);
+                    sprite->setPosition({ 50 + j * 100, 50 + i * 100});
+                    Renderer::getInstance()->draw(*sprite);
+                }
+                else if(board[j][i] != 0)
+                {
+                    std::cout << "unknown: " << (int)board[j][i];
+                }
             }
         }
+    }
+
+    void BoardManager::generateTile()
+    {
+        char count = 0;
+        for(char i = 0; i < BOARD_SIZE; i++)
+        {
+            for(char j = 0; j < BOARD_SIZE; j++)
+            {
+                if(board[j][i] == 0)
+                {
+                    count++;
+                }
+            }
+        }
+        if(count == 0)
+        {
+            std::cout << "full" << std::endl;
+            return;
+        }
+
+        std::random_device rd;
+        std::mt19937 mt(rd());
+        std::uniform_int_distribution<char> dist(0, count - 1);
+        char genIndex = dist(mt);
+
+        for(char i = 0; i < BOARD_SIZE; i++)
+        {
+            for(char j = 0; j < BOARD_SIZE; j++)
+            {
+                if(board[j][i] != 0)
+                    continue;
+
+                if(genIndex == 0)
+                {
+                    board[j][i] = 2;
+                    return;
+                }
+                genIndex--;
+            }
+        }
+
+        std::cout << "space not found" << std::endl;
     }
 }

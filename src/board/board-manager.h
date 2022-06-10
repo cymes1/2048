@@ -22,7 +22,7 @@ namespace Board
         Lava::Graphics::Texture* tex512;
         Lava::Graphics::Sprite* sprite;
 
-        char board[BOARD_SIZE][BOARD_SIZE];
+        short board[BOARD_SIZE][BOARD_SIZE];
 
     public:
         BoardManager() = default;
@@ -30,6 +30,9 @@ namespace Board
 
         void init();
         void tick();
+
+    private:
+        void generateTile();
     };
 }
 
