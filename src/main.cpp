@@ -1,9 +1,11 @@
 #include <graphics/window.h>
 #include <input/input-system.h>
+#include <audio/audio-system.h>
 #include <time/time.h>
 #include <game-state-machine.h>
 #include <states/boot-state.h>
 
+using namespace Lava::Audio;
 using namespace Lava::Graphics;
 using namespace Lava::Input;
 using namespace Lava::Time;
@@ -18,16 +20,13 @@ int main()
 
     InputSystem::getInstance()->initialize(window);
     Time::getInstance()->initialize();
+    AudioSystem::getInstance()->initialize();
     stateMachine.createNewState<BootState>();
     while(!glfwWindowShouldClose(window.getHandle()))
     {
         updateInput();
+        AudioSystem::getInstance()->tick();
 
-/*
-        std::vector <int> elements;
-        for (auto i = 0; i < 100'000'000; ++i)
-            elements.push_back(i);
-*/
         Time::getInstance()->tick();
         glClear(GL_COLOR_BUFFER_BIT);
 

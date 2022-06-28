@@ -1,10 +1,12 @@
 #include "game-state.h"
 #include <input/input-system.h>
+#include <audio/audio-system.h>
 #include <graphics/renderer.h>
 #include <states/menu-state.h>
 
-using namespace Lava::Input;
+using namespace Lava::Audio;
 using namespace Lava::Graphics;
+using namespace Lava::Input;
 
 namespace States
 {
@@ -27,6 +29,11 @@ namespace States
         boardManager.tick();
 
         Renderer::getInstance()->draw(backSprite);
+
+        if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_ESCAPE))
+        {
+            AudioSystem::getInstance()->playSound();
+        }
     }
     
     void GameState::renderImGui()
