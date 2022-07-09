@@ -1,3 +1,6 @@
+#define NDEBUG
+
+#include <cstring>
 #include <graphics/window.h>
 #include <input/input-system.h>
 #include <audio/audio-system.h>
@@ -12,32 +15,35 @@ using namespace Lava::Time;
 using namespace States;
 
 void updateInput();
+bool shouldInitializeVulkan(int args, char** argv);
 
-int main()
+int main(int args, char** argv)
 {
     GameStateMachine stateMachine;
-    Window window("2048");
+    Window window("2048", shouldInitializeVulkan(args, argv));
 
     InputSystem::getInstance()->initialize(window);
     Time::getInstance()->initialize();
     AudioSystem::getInstance()->initialize();
-    stateMachine.createNewState<BootState>();
+//    stateMachine.createNewState<BootState>();
     while(!glfwWindowShouldClose(window.getHandle()))
     {
         updateInput();
         AudioSystem::getInstance()->tick();
 
         Time::getInstance()->tick();
-        glClear(GL_COLOR_BUFFER_BIT);
+        window.tickVulkan();
+//        glClear(GL_COLOR_BUFFER_BIT);
 
-        stateMachine.tick();
-        stateMachine.renderImGui();
-        glfwSwapBuffers(window.getHandle());
+//        stateMachine.tick();
+//        stateMachine.renderImGui();
+//        glfwSwapBuffers(window.getHandle());
 
         if(InputSystem::getInstance()->getShouldExit())
             glfwSetWindowShouldClose(window.getHandle(), 1);
     }
-    stateMachine.deinitialize();
+//    stateMachine.deinitialize();
+    window.waitForVulkan();
     return 0;
 }
 
@@ -45,4 +51,10 @@ void updateInput()
 {
     InputSystem::getInstance()->tickInput();
     glfwPollEvents();
+}
+
+bool shouldInitializeVulkan(int args, char** argv)
+{
+    return true;
+    return args > 1 && strcmp(argv[1], "-vulkan") == 0;
 }
