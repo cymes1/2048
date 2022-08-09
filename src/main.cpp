@@ -2,6 +2,7 @@
 
 #include <cstring>
 #include <graphics/window.h>
+#include <graphics/vulkan-context.h>
 #include <input/input-system.h>
 #include <audio/audio-system.h>
 #include <time/time.h>
@@ -20,7 +21,11 @@ bool shouldInitializeVulkan(int args, char** argv);
 int main(int args, char** argv)
 {
     GameStateMachine stateMachine;
-    Window window("2048", shouldInitializeVulkan(args, argv));
+    bool initializeVulkan = shouldInitializeVulkan(args, argv);
+    Window window("2048", initializeVulkan);
+
+    if(initializeVulkan)
+        VulkanContext::getInstance()->initialize(window);
 
     InputSystem::getInstance()->initialize(window);
     Time::getInstance()->initialize();
@@ -32,7 +37,8 @@ int main(int args, char** argv)
         AudioSystem::getInstance()->tick();
 
         Time::getInstance()->tick();
-        window.tickVulkan();
+        if(initializeVulkan)
+            VulkanContext::getInstance()->tick();
 //        glClear(GL_COLOR_BUFFER_BIT);
 
 //        stateMachine.tick();
@@ -43,7 +49,8 @@ int main(int args, char** argv)
             glfwSetWindowShouldClose(window.getHandle(), 1);
     }
 //    stateMachine.deinitialize();
-    window.waitForVulkan();
+    if(initializeVulkan)
+        VulkanContext::getInstance()->waitForVulkan();
     return 0;
 }
 
