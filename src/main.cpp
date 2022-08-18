@@ -1,25 +1,32 @@
 #define NDEBUG
 
 #include <cstring>
+#include <game.h>
+
+/*
 #include <graphics/window.h>
 #include <graphics/vulkan-context.h>
 #include <input/input-system.h>
 #include <audio/audio-system.h>
 #include <time/time.h>
 #include <game-state-machine.h>
-#include <states/boot-state.h>
 
 using namespace Lava::Audio;
 using namespace Lava::Graphics;
 using namespace Lava::Input;
 using namespace Lava::Time;
 using namespace States;
+*/
+
+using namespace Lava;
 
 void updateInput();
 bool shouldInitializeVulkan(int args, char** argv);
 
 int main(int args, char** argv)
 {
+    Game game;
+/*
     GameStateMachine stateMachine;
     bool initializeVulkan = shouldInitializeVulkan(args, argv);
     Window window("2048", initializeVulkan);
@@ -51,13 +58,16 @@ int main(int args, char** argv)
 //    stateMachine.deinitialize();
     if(initializeVulkan)
         VulkanContext::getInstance()->waitForVulkan();
+*/
     return 0;
 }
 
 void updateInput()
 {
+/*
     InputSystem::getInstance()->tickInput();
     glfwPollEvents();
+*/
 }
 
 bool shouldInitializeVulkan(int args, char** argv)

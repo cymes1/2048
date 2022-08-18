@@ -14,12 +14,6 @@ if ! make; then
   exit 1
 fi
 
-# copy program resources
-if [ -d build/bin/res ]; then
-  rm -r build/bin/res/
-fi
-cp -r ../res build/bin/
-
 # running program
 cd build/bin || exit
 ./2048

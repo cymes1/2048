@@ -14,11 +14,5 @@ if ! make; then
     exit 1
 fi
 
-# copy program resources
-if [ -d build/bin/res ]; then
-  rm -r build/bin/res/
-fi
-cp -r ../res build/bin/
-
 # returning to root directory
 cd ..
