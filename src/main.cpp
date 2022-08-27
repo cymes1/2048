@@ -3,16 +3,18 @@
 #include <cstring>
 #include <game.h>
 
-/*
 #include <graphics/window.h>
 #include <graphics/vulkan-context.h>
+/*
 #include <input/input-system.h>
 #include <audio/audio-system.h>
 #include <time/time.h>
 #include <game-state-machine.h>
+*/
 
-using namespace Lava::Audio;
 using namespace Lava::Graphics;
+/*
+using namespace Lava::Audio;
 using namespace Lava::Input;
 using namespace Lava::Time;
 using namespace States;
@@ -25,25 +27,25 @@ bool shouldInitializeVulkan(int args, char** argv);
 
 int main(int args, char** argv)
 {
-    Game game;
-/*
-    GameStateMachine stateMachine;
+//    Game game;
+//    GameStateMachine stateMachine;
     bool initializeVulkan = shouldInitializeVulkan(args, argv);
     Window window("2048", initializeVulkan);
 
     if(initializeVulkan)
         VulkanContext::getInstance()->initialize(window);
 
-    InputSystem::getInstance()->initialize(window);
-    Time::getInstance()->initialize();
-    AudioSystem::getInstance()->initialize();
+//    InputSystem::getInstance()->initialize(window);
+//    Time::getInstance()->initialize();
+//    AudioSystem::getInstance()->initialize();
 //    stateMachine.createNewState<BootState>();
     while(!glfwWindowShouldClose(window.getHandle()))
     {
+        glfwPollEvents();
         updateInput();
-        AudioSystem::getInstance()->tick();
+//        AudioSystem::getInstance()->tick();
 
-        Time::getInstance()->tick();
+//        Time::getInstance()->tick();
         if(initializeVulkan)
             VulkanContext::getInstance()->tick();
 //        glClear(GL_COLOR_BUFFER_BIT);
@@ -52,13 +54,14 @@ int main(int args, char** argv)
 //        stateMachine.renderImGui();
 //        glfwSwapBuffers(window.getHandle());
 
+/*
         if(InputSystem::getInstance()->getShouldExit())
             glfwSetWindowShouldClose(window.getHandle(), 1);
+*/
     }
 //    stateMachine.deinitialize();
     if(initializeVulkan)
         VulkanContext::getInstance()->waitForVulkan();
-*/
     return 0;
 }
 
