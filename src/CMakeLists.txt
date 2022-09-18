@@ -20,6 +20,7 @@ set(HEADER_FILES)
 set(EXECUTABLE 2048)
 add_executable(${EXECUTABLE} ${SOURCE_FILES} ${HEADER_FILES})
 
+set(LAVA lava)
 target_link_libraries(${EXECUTABLE} ${LAVA})
 
 target_include_directories(${EXECUTABLE} PRIVATE ${CMAKE_SOURCE_DIR}/lib/lava/src)
