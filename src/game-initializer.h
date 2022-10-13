@@ -3,7 +3,7 @@
 
 #include <lava.h>
 
-class GameInitializer : public Lava::IEngineInitializer
+class GameInitializer : public Lava::EngineInitializer
 {
 public:
     void onPreWindowCreation() override;

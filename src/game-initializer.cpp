@@ -2,5 +2,7 @@
 
 void GameInitializer::onPreWindowCreation()
 {
-    LOG_DEFAULT("on pre window creation");
+    windowCreateInfo.title = "2048";
+    windowCreateInfo.width = 1920;
+    windowCreateInfo.height = 1080;
 }
