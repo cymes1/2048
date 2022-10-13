@@ -16,7 +16,7 @@ fi
 
 # running program
 cd build/bin || exit
-./2048
+./2048 --verbose
 
 # returning to root directory
 cd ..
