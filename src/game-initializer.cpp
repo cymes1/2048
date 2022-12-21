@@ -5,4 +5,5 @@ void GameInitializer::onPreWindowCreation()
     windowCreateInfo.title = "2048";
     windowCreateInfo.width = 1920;
     windowCreateInfo.height = 1080;
+    windowCreateInfo.windowMode = true;
 }

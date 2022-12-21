@@ -18,12 +18,11 @@ else()
     add_compile_definitions(LAVA_LINUX)
 endif()
 
-set(TARGET debug)
-if(${TARGET} STREQUAL debug)
-    add_compile_definitions(LAVA_LOG_ENABLED)
-    # add_compile_definitions(LAVA_LOG_VERBOSE)
-elseif(${TARGET} STREQUAL release)
-endif()
+# global variables
+set(TARGET_CONFIGURATION debug)
+set(LAVA_APP_VERSION_MAJOR 0)
+set(LAVA_APP_VERSION_MINOR 0)
+set(LAVA_APP_VERSION_PATCH 1)
 
 add_subdirectory(lib)
 add_subdirectory(src)
