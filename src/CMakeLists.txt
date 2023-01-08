@@ -1,9 +1,11 @@
 set(SOURCE_FILES
         game-initializer.cpp
+        game-loop.cpp
         main.cpp)
 
 set(HEADER_FILES
-        game-initializer.h)
+        game-initializer.h
+        game-loop.h)
 
 set(EXECUTABLE 2048)
 set(LAVA lava)
