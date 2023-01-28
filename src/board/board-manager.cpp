@@ -2,6 +2,7 @@
 #include <random>
 #include <graphics/renderer.h>
 #include <input/input-system.h>
+#include <iostream>
 
 using namespace Lava::Graphics;
 using namespace Lava::Input;

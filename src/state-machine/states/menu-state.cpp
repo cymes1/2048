@@ -1,8 +1,8 @@
 #include "menu-state.h"
 #include <graphics/renderer.h>
 #include <input/input-system.h>
-#include <utils/log.h>
-#include <states/game-state.h>
+#include <state-machine/states/game-state.h>
+#include <cstdio>
 
 using namespace Lava::Graphics;
 using namespace Lava::Input;
@@ -25,6 +25,7 @@ namespace States
 
     void MenuState::initialize()
     {
+        LOG_DEFAULT("enter MenuState");
         InputSystem::getInstance()->registerButton(startButton);
         InputSystem::getInstance()->registerButton(optionsButton);
         InputSystem::getInstance()->registerButton(exitButton);
@@ -47,12 +48,12 @@ namespace States
 
     void MenuState::onStart()
     {
-        LavaEngine::Utils::Log::info("start");
+        printf("start\n");
     }
 
     void MenuState::onOptions()
     {
-        LavaEngine::Utils::Log::info("options");
+        printf("options\n");
     }
 
     void MenuState::onExit()

@@ -1,8 +1,8 @@
 #ifndef BOOT_STATE_H
 #define BOOT_STATE_H
 
-#include <state.h>
-#include <game-state-machine.h>
+#include <state-machine/state.h>
+#include <state-machine/game-state-machine.h>
 
 namespace States
 {

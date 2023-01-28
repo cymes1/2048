@@ -2,7 +2,7 @@
 #include <input/input-system.h>
 #include <audio/audio-system.h>
 #include <graphics/renderer.h>
-#include <states/menu-state.h>
+#include <state-machine/states/menu-state.h>
 
 using namespace Lava::Audio;
 using namespace Lava::Graphics;

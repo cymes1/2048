@@ -1,11 +1,11 @@
 #include "boot-state.h"
-#include <GL/glew.h>
-#include <states/menu-state.h>
-#include <debug/debug-callback.h>
-#include <graphics/renderer.h>
+#include <state-machine/states/menu-state.h>
+#include <lava.h>
+//#include <debug/debug-callback.h>
+//#include <graphics/renderer.h>
 
-using namespace Lava::Debug;
-using namespace Lava::Graphics;
+//using namespace Lava::Debug;
+//using namespace Lava::Graphics;
 
 namespace States
 {
@@ -17,10 +17,13 @@ namespace States
     {
         initializeDebugLogs();
 //        glEnable(GL_DEPTH_TEST);
+/*
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glClearColor(50.0f / 255.0f, 62.0f / 255.0f, 56.0f / 255.0f, 1.0f);
         Renderer::getInstance()->initialize();
+*/
+        LOG_DEFAULT("enter BootState");
     }
 
     void BootState::tick()
@@ -36,6 +39,7 @@ namespace States
 
     void BootState::initializeDebugLogs()
     {
+/*
         DebugMessageControlInfo messageControlInfo = {};
         messageControlInfo.source = GL_DONT_CARE;
         messageControlInfo.type = GL_DONT_CARE;
@@ -44,5 +48,6 @@ namespace States
         messageControlInfo.ids = nullptr;
         messageControlInfo.enabled = GL_FALSE;
         initializeDebugMode(messageControlInfo);
+*/
     }
 }

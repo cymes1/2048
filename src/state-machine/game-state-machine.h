@@ -1,7 +1,7 @@
 #ifndef GAME_STATE_MACHINE_H
 #define GAME_STATE_MACHINE_H
 
-#include <state.h>
+#include <state-machine/state.h>
 
 namespace States
 {

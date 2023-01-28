@@ -24,5 +24,13 @@ set(LAVA_APP_VERSION_MAJOR 0)
 set(LAVA_APP_VERSION_MINOR 0)
 set(LAVA_APP_VERSION_PATCH 1)
 
+# configuration definitions
+if(${TARGET_CONFIGURATION} STREQUAL debug)
+    add_compile_definitions(LAVA_LOG_ENABLED)
+    add_compile_definitions(LAVA_DEBUG)
+elseif(${TARGET_CONFIGURATION} STREQUAL release)
+    add_compile_definitions(LAVA_RELEASE)
+endif()
+
 add_subdirectory(lib)
 add_subdirectory(src)
