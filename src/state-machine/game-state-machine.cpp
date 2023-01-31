@@ -1,6 +1,6 @@
 #include "game-state-machine.h"
-//#include <opengl3/imgui_impl_opengl3.h>
-//#include <glfw/imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+#include <imgui_impl_glfw.h>
 
 namespace States
 {
@@ -15,7 +15,6 @@ namespace States
 
     void GameStateMachine::renderImGui()
     {
-/*
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -26,7 +25,6 @@ namespace States
         ImGui::End();
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-*/
     }
 
     void GameStateMachine::deinitialize()

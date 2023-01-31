@@ -1,4 +1,7 @@
 #include "menu-state.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 #include <graphics/renderer.h>
 #include <input/input-system.h>
 #include <state-machine/states/game-state.h>
@@ -39,7 +42,9 @@ namespace States
     }
 
     void MenuState::renderImGui()
-    {}
+    {
+//        ImGui::ShowDemoWindow();
+    }
 
     void MenuState::deinitialize()
     {
