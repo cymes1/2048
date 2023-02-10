@@ -2,7 +2,7 @@
 #include <imgui.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#include <graphics/renderer.h>
+#include <graphics/renderer/renderer.h>
 #include <input/input-system.h>
 #include <state-machine/states/game-state.h>
 #include <cstdio>

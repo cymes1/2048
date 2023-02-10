@@ -1,6 +1,6 @@
 #include "board-manager.h"
 #include <random>
-#include <graphics/renderer.h>
+#include <graphics/renderer/renderer.h>
 #include <input/input-system.h>
 #include <iostream>
 

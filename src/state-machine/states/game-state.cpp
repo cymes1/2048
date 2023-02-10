@@ -1,7 +1,7 @@
 #include "game-state.h"
 #include <input/input-system.h>
 #include <audio/audio-system.h>
-#include <graphics/renderer.h>
+#include <graphics/renderer/renderer.h>
 #include <state-machine/states/menu-state.h>
 
 using namespace Lava::Audio;
