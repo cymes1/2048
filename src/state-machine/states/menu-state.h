@@ -1,6 +1,8 @@
 #ifndef MENU_STATE_H
 #define MENU_STATE_H
 
+#include <memory/borrowed-memory.h>
+#include <graphics/renderer/renderer.h>
 #include <state-machine/state.h>
 #include <state-machine/game-state-machine.h>
 #include <graphics/sprite.h>
@@ -28,7 +30,8 @@ namespace States
         static void onExit();
 
     public:
-        explicit MenuState(GameStateMachine* stateMachine);
+        explicit MenuState(GameStateMachine* stateMachine,
+                           Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
 
         void initialize() override;
         void tick() override;

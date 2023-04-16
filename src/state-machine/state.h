@@ -1,6 +1,9 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <memory/borrowed-memory.h>
+#include <graphics/renderer/renderer.h>
+
 namespace States
 {
     template <typename TStateMachine>
@@ -8,9 +11,13 @@ namespace States
     {
     protected:
         TStateMachine* stateMachine;
+        Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer;
 
     public:
-        explicit State(TStateMachine* stateMachine) : stateMachine(stateMachine) {}
+        explicit State(TStateMachine* stateMachine,
+                       Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer)
+                       : stateMachine(stateMachine), renderer(renderer)
+                       {}
         virtual ~State() = default;
 
         virtual void initialize() = 0;

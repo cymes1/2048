@@ -1,6 +1,8 @@
 #ifndef BOARD_MANAGER_H
 #define BOARD_MANAGER_H
 
+#include <memory/borrowed-memory.h>
+#include <graphics/renderer/renderer.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
 
@@ -11,6 +13,8 @@ namespace Board
     class BoardManager
     {
     private:
+        Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer;
+
         Lava::Graphics::Texture* tex2;
         Lava::Graphics::Texture* tex4;
         Lava::Graphics::Texture* tex8;
@@ -25,7 +29,7 @@ namespace Board
         short board[BOARD_SIZE][BOARD_SIZE];
 
     public:
-        BoardManager() = default;
+        BoardManager(Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
         ~BoardManager();
 
         void init();

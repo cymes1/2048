@@ -11,7 +11,7 @@ private:
     States::GameStateMachine gameStateMachine;
 
 protected:
-    void initialize() override;
+    void initialize(Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer) override;
     void tick() override;
     void draw() override;
     void drawImGui() override;

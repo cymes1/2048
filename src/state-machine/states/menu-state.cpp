@@ -7,13 +7,14 @@
 #include <state-machine/states/game-state.h>
 #include <cstdio>
 
+using namespace Lava::Memory;
 using namespace Lava::Graphics;
 using namespace Lava::Input;
 
 namespace States
 {
-    MenuState::MenuState(GameStateMachine *stateMachine)
-        : State(stateMachine),
+    MenuState::MenuState(GameStateMachine *stateMachine, BorrowedMemory<Renderer> renderer)
+        : State(stateMachine, renderer),
           startButtonTexture("res/texture/start-button.png"),
           optionsButtonTexture("res/texture/options-button.png"),
           exitButtonTexture("res/texture/exit-button.png"),
@@ -36,9 +37,9 @@ namespace States
 
     void MenuState::tick()
     {
-        Renderer::getInstance()->draw(startSprite);
-        Renderer::getInstance()->draw(optionsSprite);
-        Renderer::getInstance()->draw(exitSprite);
+        renderer.get().draw(startSprite);
+        renderer.get().draw(optionsSprite);
+        renderer.get().draw(exitSprite);
     }
 
     void MenuState::renderImGui()

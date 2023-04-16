@@ -1,6 +1,8 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
+#include <memory/borrowed-memory.h>
+#include <graphics/renderer/renderer.h>
 #include <state-machine/state.h>
 #include <state-machine/game-state-machine.h>
 #include <graphics/sprite.h>
@@ -22,7 +24,8 @@ namespace States
         static void onBack();
 
     public:
-        explicit GameState(GameStateMachine* stateMachine);
+        explicit GameState(GameStateMachine* stateMachine,
+                           Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
 
         void initialize() override;
         void tick() override;

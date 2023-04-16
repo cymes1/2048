@@ -4,11 +4,16 @@
 #include <input/input-system.h>
 #include <iostream>
 
+using namespace Lava::Memory;
 using namespace Lava::Graphics;
 using namespace Lava::Input;
 
 namespace Board
 {
+    BoardManager::BoardManager(Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer)
+        : renderer(renderer)
+    {}
+
     BoardManager::~BoardManager()
     {
         delete sprite;
@@ -138,55 +143,55 @@ namespace Board
                 {
                     sprite->setTexture(*tex2);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 4)
                 {
                     sprite->setTexture(*tex4);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 8)
                 {
                     sprite->setTexture(*tex8);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 16)
                 {
                     sprite->setTexture(*tex16);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 32)
                 {
                     sprite->setTexture(*tex32);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 64)
                 {
                     sprite->setTexture(*tex64);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 128)
                 {
                     sprite->setTexture(*tex128);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 256)
                 {
                     sprite->setTexture(*tex256);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] == 512)
                 {
                     sprite->setTexture(*tex512);
                     sprite->setPosition({ 50 + j * 100, 50 + i * 100});
-                    Renderer::getInstance()->draw(*sprite);
+                    renderer.get().draw(*sprite);
                 }
                 else if(board[j][i] != 0)
                 {

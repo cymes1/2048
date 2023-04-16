@@ -5,17 +5,18 @@
 #include <state-machine/states/menu-state.h>
 
 using namespace Lava::Audio;
+using namespace Lava::Memory;
 using namespace Lava::Graphics;
 using namespace Lava::Input;
 
 namespace States
 {
-    GameState::GameState(GameStateMachine *stateMachine)
-        : State(stateMachine),
+    GameState::GameState(GameStateMachine *stateMachine, BorrowedMemory<Renderer> renderer)
+        : State(stateMachine, renderer),
           backTexture("res/texture/start-button.png"),
           backSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), backTexture),
           backButton(backSprite, [stateMachine]() { stateMachine->createNewState<MenuState>(); }),
-          boardManager()
+          boardManager(renderer)
     {}
 
     void GameState::initialize()
@@ -28,7 +29,7 @@ namespace States
     {
         boardManager.tick();
 
-        Renderer::getInstance()->draw(backSprite);
+        renderer.get().draw(backSprite);
 
         if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_ESCAPE))
         {

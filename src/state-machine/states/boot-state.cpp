@@ -1,16 +1,14 @@
 #include "boot-state.h"
 #include <state-machine/states/menu-state.h>
 #include <lava.h>
-//#include <debug/debug-callback.h>
-//#include <graphics/renderer.h>
 
-//using namespace Lava::Debug;
-//using namespace Lava::Graphics;
+using namespace Lava::Memory;
+using namespace Lava::Graphics;
 
 namespace States
 {
-    BootState::BootState(GameStateMachine *stateMachine)
-        : State(stateMachine)
+    BootState::BootState(GameStateMachine *stateMachine, BorrowedMemory<Renderer> renderer)
+        : State(stateMachine, renderer)
     {}
 
     void BootState::initialize()

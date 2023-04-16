@@ -1,6 +1,8 @@
 #ifndef GAME_STATE_MACHINE_H
 #define GAME_STATE_MACHINE_H
 
+#include <memory/borrowed-memory.h>
+#include <graphics/renderer/renderer.h>
 #include <state-machine/state.h>
 
 namespace States
@@ -8,11 +10,13 @@ namespace States
     class GameStateMachine
     {
     private:
+        Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer;
         State<GameStateMachine>* state;
 
     public:
         GameStateMachine();
 
+        void initialize(Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
         void tick();
         void renderImGui();
         void deinitialize();
@@ -26,7 +30,7 @@ namespace States
                 delete state;
             }
 
-            state = new TState(this);
+            state = new TState(this, renderer);
             state->initialize();
         }
     };
