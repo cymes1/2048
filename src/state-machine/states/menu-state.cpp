@@ -18,9 +18,9 @@ namespace States
           startButtonTexture("res/texture/start-button.png"),
           optionsButtonTexture("res/texture/options-button.png"),
           exitButtonTexture("res/texture/exit-button.png"),
-          startSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), startButtonTexture),
-          optionsSprite(glm::vec3(960, 540, 0), glm::vec3(462, 92, 1), optionsButtonTexture),
-          exitSprite(glm::vec3(960, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture),
+          startSprite(glm::vec3(729, 690, 0), glm::vec3(462, 92, 1), startButtonTexture),
+          optionsSprite(glm::vec3(729, 540, 0), glm::vec3(462, 92, 1), optionsButtonTexture),
+          exitSprite(glm::vec3(729, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture),
           startButton(startSprite, [stateMachine]() { stateMachine->createNewState<GameState>(); }),
           optionsButton(optionsSprite, onOptions),
           exitButton(exitSprite, onExit)
@@ -54,12 +54,12 @@ namespace States
 
     void MenuState::onStart()
     {
-        printf("start\n");
+        LOG_DEFAULT("start");
     }
 
     void MenuState::onOptions()
     {
-        printf("options\n");
+        LOG_DEFAULT("options");
     }
 
     void MenuState::onExit()
