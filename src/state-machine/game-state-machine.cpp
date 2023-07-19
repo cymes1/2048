@@ -23,6 +23,7 @@ namespace States
 
     void GameStateMachine::renderImGui()
     {
+/*
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -35,6 +36,7 @@ namespace States
         ImGui::End();
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+*/
     }
 
     void GameStateMachine::deinitialize()

@@ -26,7 +26,7 @@ namespace States
 
     void BootState::tick()
     {
-        stateMachine->createNewState<MenuState>();
+//        stateMachine->createNewState<MenuState>();
     }
 
     void BootState::renderImGui()

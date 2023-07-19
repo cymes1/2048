@@ -16,7 +16,7 @@ fi
 
 # running program
 cd build/bin || exit
-./2048 --verbose
+./2048 --verbose --vulkan
 
 # returning to root directory
 cd ..
