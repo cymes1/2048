@@ -2,6 +2,7 @@ set(SOURCE_FILES
         game-initializer.cpp
         game-loop.cpp
         board/board-manager.cpp
+        state-machine/app-state-machine.cpp
         state-machine/game-state-machine.cpp
         state-machine/states/boot-state.cpp
         state-machine/states/game-state.cpp
@@ -12,6 +13,7 @@ set(HEADER_FILES
         game-initializer.h
         game-loop.h
         board/board-manager.h
+        state-machine/app-state-machine.h
         state-machine/state.h
         state-machine/states/boot-state.h
         state-machine/states/game-state.h
