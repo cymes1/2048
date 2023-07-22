@@ -6,6 +6,7 @@ set(SOURCE_FILES
         state-machine/game-state-machine.cpp
         state-machine/states/boot-state.cpp
         state-machine/states/game-state.cpp
+        state-machine/states/main-menu-state.cpp
         state-machine/states/menu-state.cpp
         main.cpp)
 
@@ -17,6 +18,7 @@ set(HEADER_FILES
         state-machine/state.h
         state-machine/states/boot-state.h
         state-machine/states/game-state.h
+        state-machine/states/main-menu-state.h
         state-machine/states/menu-state.h)
 
 set(EXECUTABLE 2048)
