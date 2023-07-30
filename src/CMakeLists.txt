@@ -1,5 +1,4 @@
 set(SOURCE_FILES
-        game-initializer.cpp
         game-loop.cpp
         board/board-manager.cpp
         state-machine/app-state-machine.cpp
@@ -11,7 +10,6 @@ set(SOURCE_FILES
         main.cpp)
 
 set(HEADER_FILES
-        game-initializer.h
         game-loop.h
         board/board-manager.h
         state-machine/app-state-machine.h
