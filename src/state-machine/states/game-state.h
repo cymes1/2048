@@ -1,10 +1,9 @@
 #ifndef GAME_STATE_H
 #define GAME_STATE_H
 
+#include <lava.h>
 #include <memory/borrowed-memory.h>
 #include <graphics/renderer/renderer.h>
-#include <state-machine/state.h>
-#include <state-machine/game-state-machine.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
 #include <ui/button.h>
@@ -12,25 +11,23 @@
 
 namespace States
 {
-    class GameState : public State<GameStateMachine>
+class GameState : public Lava::Core::BaseAppState
     {
     private:
         Lava::Graphics::Texture backTexture;
         Lava::Graphics::Sprite backSprite;
         Lava::UI::Button backButton;
-        Board::BoardManager boardManager;
+//        Board::BoardManager boardManager;
 
     private:
         static void onBack();
 
     public:
-        explicit GameState(GameStateMachine* stateMachine,
-                           Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
+        explicit GameState(Lava::Core::BaseAppStateMachine* stateMachine);
 
-        void initialize() override;
+        void init() override;
         void tick() override;
-        void renderImGui() override;
-        void deinitialize() override;
+        void deinit() override;
     };
 }
 

@@ -4,6 +4,7 @@
 #include <graphics/renderer/renderer.h>
 #include <state-machine/states/menu-state.h>
 
+using namespace Lava::Core;
 using namespace Lava::Audio;
 using namespace Lava::Memory;
 using namespace Lava::Graphics;
@@ -11,25 +12,25 @@ using namespace Lava::Input;
 
 namespace States
 {
-    GameState::GameState(GameStateMachine *stateMachine, BorrowedMemory<Renderer> renderer)
-        : State(stateMachine, renderer),
+    GameState::GameState(BaseAppStateMachine* stateMachine)
+        : BaseAppState(stateMachine),
           backTexture("res/texture/start-button.png"),
           backSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), backTexture),
-          backButton(backSprite, [stateMachine]() { stateMachine->createNewState<MenuState>(); }),
-          boardManager(renderer)
+          backButton(backSprite, [stateMachine]() { stateMachine->goToState<MenuState>(); })
+//          ,boardManager(renderer)
     {}
 
-    void GameState::initialize()
+    void GameState::init()
     {
         InputSystem::getInstance()->registerButton(backButton);
-        boardManager.init();
+//        boardManager.init();
     }
 
     void GameState::tick()
     {
-        boardManager.tick();
+//        boardManager.tick();
 
-        renderer.get().draw(backSprite);
+//        renderer.get().draw(backSprite);
 
         if(InputSystem::getInstance()->getKeyDown(GLFW_KEY_ESCAPE))
         {
@@ -37,10 +38,7 @@ namespace States
         }
     }
     
-    void GameState::renderImGui()
-    {}
-
-    void GameState::deinitialize()
+    void GameState::deinit()
     {
         InputSystem::getInstance()->clearButtons();
     }

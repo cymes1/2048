@@ -2,16 +2,15 @@
 #define MENU_STATE_H
 
 #include <memory/borrowed-memory.h>
+#include <lava.h>
 #include <graphics/renderer/renderer.h>
-#include <state-machine/state.h>
-#include <state-machine/game-state-machine.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
 #include <ui/button.h>
 
 namespace States
 {
-    class MenuState : public State<GameStateMachine>
+class MenuState : public Lava::Core::BaseAppState
     {
     private:
         Lava::Graphics::Texture startButtonTexture;
@@ -30,13 +29,11 @@ namespace States
         static void onExit();
 
     public:
-        explicit MenuState(GameStateMachine* stateMachine,
-                           Lava::Memory::BorrowedMemory<Lava::Graphics::Renderer> renderer);
+        explicit MenuState(Lava::Core::BaseAppStateMachine* stateMachine);
 
-        void initialize() override;
+        void init() override;
+        void deinit() override;
         void tick() override;
-        void renderImGui() override;
-        void deinitialize() override;
     };
 }
 
