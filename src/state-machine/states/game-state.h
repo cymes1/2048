@@ -2,7 +2,6 @@
 #define GAME_STATE_H
 
 #include <lava.h>
-#include <memory/borrowed-memory.h>
 #include <graphics/renderer/renderer.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>

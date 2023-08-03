@@ -1,7 +1,6 @@
 #ifndef MENU_STATE_H
 #define MENU_STATE_H
 
-#include <memory/borrowed-memory.h>
 #include <lava.h>
 #include <graphics/renderer/renderer.h>
 #include <graphics/sprite.h>

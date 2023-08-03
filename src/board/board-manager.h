@@ -1,7 +1,7 @@
 #ifndef BOARD_MANAGER_H
 #define BOARD_MANAGER_H
 
-#include <memory/borrowed-memory.h>
+#include <lava.h>
 #include <graphics/renderer/renderer.h>
 #include <graphics/sprite.h>
 #include <graphics/texture.h>
