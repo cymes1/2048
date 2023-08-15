@@ -28,4 +28,4 @@ target_include_directories(${EXECUTABLE} PRIVATE ${LAVA_SOURCE_DIR})
 # copy resources to build directory
 add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/res/ $<TARGET_FILE_DIR:${EXECUTABLE}>/res)
+        ${CMAKE_SOURCE_DIR}/res $<TARGET_FILE_DIR:${EXECUTABLE}>/res)
