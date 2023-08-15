@@ -16,6 +16,9 @@ set(HEADER_FILES
 set(EXECUTABLE 2048)
 set(LAVA lava)
 set(LAVA_SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/lava/src)
+set(MAIN mainLib)
+
+add_subdirectory(main)
 
 add_executable(${EXECUTABLE} ${SOURCE_FILES} ${HEADER_FILES})
 
