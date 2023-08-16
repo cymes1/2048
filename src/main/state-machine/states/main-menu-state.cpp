@@ -1,7 +1,10 @@
 #include "main-menu-state.h"
 
-MainMenuState::MainMenuState(Lava::Core::BaseAppStateMachine* _stateMachine)
-    : Lava::Core::BaseAppState(_stateMachine)
+using namespace Lava::Core;
+using namespace Lava::Graphics;
+
+MainMenuState::MainMenuState(BaseAppStateMachine* _stateMachine, DomainManager* _domainManager)
+    : Lava::Core::BaseAppState(_stateMachine, _domainManager)
 {}
 
 MainMenuState::~MainMenuState() = default;
@@ -22,7 +25,10 @@ void initializeDebugLogs()
 
 void MainMenuState::init()
 {
+    LOG_DEFAULT("Enter MainMenuState");
     initializeDebugLogs();
+
+    gameDomain = domainManager->getOrCreateDomain<GameDomain>();
 //        glEnable(GL_DEPTH_TEST);
 /*
         glEnable(GL_BLEND);
@@ -30,13 +36,17 @@ void MainMenuState::init()
         glClearColor(50.0f / 255.0f, 62.0f / 255.0f, 56.0f / 255.0f, 1.0f);
         Renderer::getInstance()->initialize();
 */
-    LOG_DEFAULT("Enter MainMenuState");
 }
 
 void MainMenuState::deinit()
 {
+    domainManager->unloadDomain<GameDomain>();
     LOG_DEFAULT("Leave MainMenuState");
 }
 
 void MainMenuState::tick()
-{}
+{
+    gameDomain->earlyTick();
+    gameDomain->tick();
+    gameDomain->lateTick();
+}

@@ -22,7 +22,7 @@ class GameState : public Lava::Core::BaseAppState
         static void onBack();
 
     public:
-        explicit GameState(Lava::Core::BaseAppStateMachine* stateMachine);
+        explicit GameState(Lava::Core::BaseAppStateMachine* _stateMachine, Lava::Core::DomainManager* _domainManager);
 
         void init() override;
         void tick() override;

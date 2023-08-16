@@ -28,7 +28,7 @@ class MenuState : public Lava::Core::BaseAppState
         static void onExit();
 
     public:
-        explicit MenuState(Lava::Core::BaseAppStateMachine* stateMachine);
+        explicit MenuState(Lava::Core::BaseAppStateMachine* _stateMachine, Lava::Core::DomainManager* _domainManager);
 
         void init() override;
         void deinit() override;

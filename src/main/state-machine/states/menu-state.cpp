@@ -4,7 +4,7 @@
 #include <imgui_impl_opengl3.h>
 #include <graphics/renderer/renderer.h>
 #include <input/input-system.h>
-#include <state-machine/states/game-state.h>
+#include <main/state-machine/states/game-state.h>
 
 using namespace Lava::Core;
 using namespace Lava::Memory;
@@ -13,15 +13,15 @@ using namespace Lava::Input;
 
 namespace States
 {
-    MenuState::MenuState(BaseAppStateMachine* stateMachine)
-        : BaseAppState(stateMachine),
+    MenuState::MenuState(BaseAppStateMachine* _stateMachine, DomainManager* _domainManager)
+        : BaseAppState(_stateMachine, _domainManager),
           startButtonTexture("res/texture/start-button.png"),
           optionsButtonTexture("res/texture/options-button.png"),
           exitButtonTexture("res/texture/exit-button.png"),
           startSprite(glm::vec3(729, 690, 0), glm::vec3(462, 92, 1), startButtonTexture),
           optionsSprite(glm::vec3(729, 540, 0), glm::vec3(462, 92, 1), optionsButtonTexture),
           exitSprite(glm::vec3(729, 390, 0), glm::vec3(462, 92, 1), exitButtonTexture),
-          startButton(startSprite, [stateMachine]() { stateMachine->goToState<GameState>(); }),
+          startButton(startSprite, [_stateMachine]() { _stateMachine->goToState<GameState>(); }),
           optionsButton(optionsSprite, onOptions),
           exitButton(exitSprite, onExit)
     {

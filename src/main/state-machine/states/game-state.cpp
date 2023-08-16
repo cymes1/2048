@@ -2,7 +2,7 @@
 #include <input/input-system.h>
 #include <audio/audio-system.h>
 #include <graphics/renderer/renderer.h>
-#include <state-machine/states/menu-state.h>
+#include <main/state-machine/states/menu-state.h>
 
 using namespace Lava::Core;
 using namespace Lava::Audio;
@@ -12,11 +12,11 @@ using namespace Lava::Input;
 
 namespace States
 {
-    GameState::GameState(BaseAppStateMachine* stateMachine)
-        : BaseAppState(stateMachine),
+    GameState::GameState(BaseAppStateMachine* _stateMachine, DomainManager* _domainManager)
+        : BaseAppState(_stateMachine, _domainManager),
           backTexture("res/texture/start-button.png"),
           backSprite(glm::vec3(960, 690, 0), glm::vec3(462, 92, 1), backTexture),
-          backButton(backSprite, [stateMachine]() { stateMachine->goToState<MenuState>(); })
+          backButton(backSprite, [_stateMachine]() { _stateMachine->goToState<MenuState>(); })
 //          ,boardManager(renderer)
     {}
 

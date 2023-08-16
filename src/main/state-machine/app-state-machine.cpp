@@ -1,6 +1,6 @@
 #include "app-state-machine.h"
 
-#include "states/main-menu-state.h"
+#include "main/state-machine/states/main-menu-state.h"
 
 void AppStateMachine::onStateMachineLoaded()
 {

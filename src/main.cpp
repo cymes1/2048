@@ -1,6 +1,6 @@
 #include <lava.h>
 #include <lava-entry-point.h>
-#include <state-machine/app-state-machine.h>
+#include <main/state-machine/app-state-machine.h>
 
 using namespace Lava;
 
