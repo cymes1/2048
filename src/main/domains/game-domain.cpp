@@ -23,8 +23,8 @@ void GameDomain::earlyTick()
 
 void GameDomain::tick()
 {
-    Sprite sprite({-0.5f, 0.0f}, {0.5f, 0.5f});
-    Sprite sprite1({0.5f, 0.0f}, {0.5f, 0.5f});
+    Sprite sprite({-0.5f, 0.0f}, {0.5f, 0.5f}, {0.0f, 1.0f, 0.5f});
+    Sprite sprite1({0.5f, 0.0f}, {0.5f, 0.5f}, {1.0f, 0.5f, 0.2f});
     graphicsDomain->getRenderer().get().draw(sprite1);
     graphicsDomain->getRenderer().get().draw(sprite);
 }
